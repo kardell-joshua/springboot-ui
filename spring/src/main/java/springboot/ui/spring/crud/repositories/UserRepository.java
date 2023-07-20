@@ -1,9 +1,11 @@
 package springboot.ui.spring.crud.repositories;
 
-import org.springframework.data.repository.*;
-
-import springboot.ui.spring.Repository;
 import springboot.ui.spring.crud.entities.User;
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {}
+public interface UserRepository extends CrudRepository<User, Long> {
+    List<User> findByName(String name);
+}
