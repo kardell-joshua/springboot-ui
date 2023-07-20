@@ -14,6 +14,9 @@ public class FooController {
     @Autowired
     private FooService fooService;
 
+    // Annotations associate metadata to the program elements
+    // @GetMapping annotation is for mapping HTTP GET requests onto specific handler methods
+    // @GetMapping is shorthand for @RequestMapping(method=RequestMethod.GET)
     @GetMapping("/{id}")
     public Foo getFooWithId(@PathVariable Integer id) throws Exception {
         return fooService.getFooWithId(id);
