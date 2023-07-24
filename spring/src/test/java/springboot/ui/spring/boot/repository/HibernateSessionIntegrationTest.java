@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.hamcrest.CoreMatchers.is;
-import org.hamcrest.CoreMatchers.notNullValue;
-import org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 @Transactional
 public class HibernateSessionIntegrationTest extends DemoApplicationIntegrationTest {
