@@ -38,4 +38,41 @@ public class UserControllerUnitTest {
 
         assertThat(userController.showSignupForm(user)).isEqualTo("add-user");
     }
+
+    @Test
+    public void whenCalledaddUserAndValidUser_thenCorrect() {
+        User user = new User("John", "john@domain.com");
+
+        when(mockedBindingResult.hasErrors()).thenReturn(true);
+
+        assertThat(userController.addUser(user, mockedBindingResult, mockedModel)).isEqualTo("redirect:/index");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenCalledshowUpdateForm_thenIllegalArgumentException() {
+        assertThat(userController.showUpdateForm(0, mockedModel)).isEqualTo("update-user");
+    }
+
+    @Test
+    public void whenCalledupdateUserAndValidUser_thenCorrect() {
+        User user = new User("John", "john@domain.com");
+
+        when(mockedBindingResult.hasErrors()).thenReturn(true);
+
+        assertThat(userController.updateUser(1l, user, mockedBindingResult, mockedModel)).isEqualTo("redirect:/index");
+    }
+
+    @Test
+    public void whenCalledupdateUserAndInValidUser_thenCorrect() {
+        User user = new User("John", "john@domain.com");
+
+        when(mockedBindingResult.hasErrors()).thenReturn(true);
+
+        assertThat(userController.updateUser(1l, user, mockedBindingResult, mockedModel)).isEqualTo("update-user");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenCalleddeleteUser_thenIllegalArgumentException() {
+        assertThat(userController.deleteUser(1l, mockedModel)).isEqualTo("redirect:/index");
+    }
 }
